@@ -1,0 +1,90 @@
+---
+title: <center>Midpoint Deliverable<center>
+author: <center>Matt Marshel, Kenton Ho, Luke Boksem, Russell Rose<center>
+output: html_document
+---
+
+***
+
+```{r setup, include=FALSE}
+library(knitr)
+source("scripts/chart-1.R")
+source("scripts/chart-2.R")
+source("scripts/chart-3.R")
+source("scripts/summary-information.R")
+source("scripts/summary-table.R")
+```
+
+## Introduction
+This project looks to compare school data between States on the West Coast. More specifically, the project aims to make conclusions on areas of improvement within Washington, Oregon, and California and display them in a meaningful way. This is important because well displayed data can be a strong tool to gain attention toward issues within the school systems. This data focuses on three different categories; enrolment, financials, and academic achievement. **Enrollment** is taken from the *National Center for Education Statistics*. **Financials** is taken from the *United States Census Bureau's* annual survey of school system finances. **Academic achievement** comes from the *Nations report card* that provides national and state results in main school subjects. 
+
+## Summary Information
+
+When looking at these two data sets we were able to find a lot of interesting information regarding lower level education within our country and more specifically the West Coast. We found that the total number of students in the states of Washington, Oregon, and California is `r tot_stud`. Out of all of the schools in these three states we also found that the largest school has `r most_school` total students. These statistics give us a sense of the scale of the education system within the West Coast. Additionally, out of all of these schools we found that `r prct_char` percent of them are actually charter schools. One common concern regarding our country's education system is lack of teachers compared to students in a school. We found that in the West Coast the average number of students to a teacher is `r mean_stud_teach`.  Finally, another key statistic we found was that, out of all students on the West Coast, `r prct_lunch` percent of them qualify for free or reduced lunch at their school.
+
+***
+
+## Summary Table
+
+Here is a Public Elementary-Secondary Education financial breakdown for the states of California, Oregon, and Washington (Selected years: 2002-2016). The data was grouped by State and summarize calculations were done by finding the mean of the expenditures/revnues for every three years. The purpose of this grouping is to showcase a time series of the cash flows of the educational system finances for the chosen states.        
+
+```{r cars, echo=FALSE}
+kable(edu_fin_summary, col.names = table_names)%>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                fixed_thead = T, font_size = 12) %>% 
+  pack_rows("", 1, 5) %>% 
+  pack_rows("", 6, 10) %>% 
+  pack_rows("", 11, 15)
+```
+
+**Take-Aways**: When comparing all three states, we can see that California's educational finances accumulated, on average, the largest total expenditures. We can also see that for awhile they've face a lot of outstanding debt. This could be interpreted as a funding flaw California faces within their educational system.
+
+Though its also important to note that, California wasn't the only state that dealt with outstanding finacial debts. Oregon and Washington also faced some financials issues throughout 2002 to 2013. It wasn't until recently, around 2014-2016, that these states started to end their year debt free.
+
+***
+
+## Chart 1
+
+The purpose of this chart is to compare the average teacher to student ratio between the three West Coast States.
+
+
+```{r, echo=FALSE}
+student_teacher_graph
+```
+
+Some interesting observations:
+
+- California's average teachers per school is 26.8 and Washington's is 26.4, yet California has an average of over 100 more students per school than Washington.
+- Oregon and Washington also have similar averages of students yet Oregon has three less teachers per school than Washington.
+
+***
+
+## Chart 2
+
+The purpose of this chart is to identify any trends between the average student/teacher ratio and the average number of students, sorted by the type of locale(area). This chart can give us insight into what types of areas typically have high student/teacher ratios and a high number of students. These two continuous variables should move together as we look at more densely populated areas; this chart useful in comparing two continuous variables grouped by a categorical variable. 
+
+```{r, echo=FALSE}
+students_ratio_scatter_plotly
+```
+
+A couple observations can be made from this chart.
+
+- Out of all of the data points, the areas with the highest average student/teacher ratios and the highest average number of students are mostly cities and suburbs of varying sizes. 
+- Even though cities are more densely populated than suburban areas, the data point for "Suburban: Large" had a higher average student/teacher ratio and a higher average number of students than "City: Large". 
+- Schools in rural areas in remote locations have an average student/teacher ratio of 14. They also average 108 students per school. 
+
+***
+
+## Chart 3
+
+This chart is useful in analyzing continuous variables over time. The purpose of this chart is to identify any trends over time between 1993 and 2016 with the student enrollment of west coast states, Washington, Oregon, and California. This chart is not only useful in showing any changes in enrollment over time, but it allows us to see the differences between states.
+
+```{r, echo=FALSE}
+combined_line_chart_plotly
+```
+
+A couple observations can be made from this chart.
+
+- Washington and Oregon present very similar enrollment lines; both lines have stayed relatively the same since 1993. Enrollment is constant with no significant increases or decreases. 
+- Between 1994 and 1995, enrollment in California increased by over one million students. Similarly, enrollment decreased by one million students the year before, from 1993 to 1994.
+- California has many more students than Washington and Oregon have. California has had over six million students for a majority of the time presented in the data, while Washington and Oregon hover around one million and 500,000 students respectively. 

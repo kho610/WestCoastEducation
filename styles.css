@@ -1,0 +1,27 @@
+
+/* Style Element 1 */
+h2 {
+  font-family: 'Lobster', cursive;
+}
+
+/* Style Element 2 */
+h3 {
+  font-weight: bold;
+  color: black;
+}
+
+/* Style Element 3 */
+form.well {
+  border-style: solid;
+  border-color: #ff6984;
+}
+
+/* Style Element 4 */
+h1 {
+  text-align: center;
+}
+
+/* Style Element 5 */
+div.selectize-input.items.full.has-options.has-items {
+  border-color: #ff6984;
+}
